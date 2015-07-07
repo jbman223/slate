@@ -71,6 +71,7 @@ type | true | The type of data being uploaded in this request. | Query String
 ###Input Types
 
 Type ID | Description | Example
+--------| -----------| --------
 1 | Binary input data. A zipcode is entered into a list one time for each potential sale, with a binary 1 or 0 representing a successful or unsuccessful sale respectively. | `34109,1;34109,0`
 
 ###Post Parameters
