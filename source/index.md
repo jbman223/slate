@@ -45,7 +45,8 @@ apikey | true | The API key attached to the current profile.
 {
    "message":"Hello! Your api key is valid.",
    "name":"Jacob's Even Cooler Profile"
-}```
+}
+```
 
 <aside class="error">
 An invalid API key will cause the request to return a 404 error.
