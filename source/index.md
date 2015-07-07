@@ -53,9 +53,9 @@ apikey | true | The API key attached to the current profile. | Query String
 An invalid API key will cause the request to return a 404 error.
 </aside>
 
-## Test Current Profile
+## Create New Profile
 
-This endpoint retrieves the current profile.
+Create a new profile by replacing all zipcode sale information attached to this profile with the provided zipcode sale information.
 
 ### HTTP Request
 
