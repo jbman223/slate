@@ -46,6 +46,7 @@ apikey | true | The API key attached to the current profile. | Query String
 A successful call will return the profile name and a friendly message.
 
 > An example successful call
+
 ```json
 {
    "message":"Hello! Your api key is valid.",
@@ -83,6 +84,7 @@ Type ID | Description | Example
 In the post body, a list of zipcodes should be included in the proper format type supplied in the URL.
 
 > Sample post body response
+
 ```
 34109, 1
 34109 : 0
@@ -95,6 +97,7 @@ In the post body, a list of zipcodes should be included in the proper format typ
 The data is added to your profile asynchronosly, and may not be available immediately after your response completes. Longer data sets may take seconds to complete.
 
 > Successful response message
+
 ```json
 {
    "message":"Data added to queue."
@@ -102,6 +105,7 @@ The data is added to your profile asynchronosly, and may not be available immedi
 ```
 
 > An example error response
+
 ```json
 {
 	"error": "Format not recieved."
@@ -142,6 +146,7 @@ Type ID | Description | Example
 In the post body, a list of zipcodes should be included in the proper format type supplied in the URL.
 
 > Sample post body response
+
 ```
 34109, 1
 34109 : 0
@@ -154,6 +159,7 @@ In the post body, a list of zipcodes should be included in the proper format typ
 The data is added to your profile asynchronosly, and may not be available immediately after your response completes. Longer data sets may take seconds to complete.
 
 > Successful response message
+
 ```json
 {
    "message":"Data added to queue."
@@ -161,6 +167,7 @@ The data is added to your profile asynchronosly, and may not be available immedi
 ```
 
 > An example error response
+
 ```json
 {
 	"error": "Format not recieved."
@@ -194,6 +201,7 @@ apikey | true | The API key attached to the current profile. | Query String
 A successful response will report that the data has been cleared from the specified profile.
 
 > A successful Delete response
+
 ```json
 {
 	"message":"Data deleted from profile"
@@ -225,6 +233,7 @@ apikey | true | The API key attached to the current profile. | Query String
 The server will return a response with your API key and a message.
 
 > A successful call to the API will return a message and your API key.
+
 ```json
 {
 	"message":"You are successfully accessing the API.",
@@ -257,6 +266,7 @@ apikey | true | The API key attached to the current profile. | Query String
 A successful response will include the zipcode, the zipcode's rating, and a null warning.
 
 > A successful response
+
 ```json
 {
 	"ZipNum":34109,
@@ -268,6 +278,7 @@ A successful response will include the zipcode, the zipcode's rating, and a null
 If the `warning` parameter is not null, there has been an update to your data that has not yet been processed by the server. Data is proccesed in bulk about every 5 minutes.
 
 > A pending update response
+
 ```json
 {
 	"ZipNum":34109,
@@ -279,6 +290,7 @@ If the `warning` parameter is not null, there has been an update to your data th
 If the `Rating` parameter is 0, the data is currently being recalculated by the server and will not be available for about 10 seconds. This only happens after the data is first created or recently updated.
 
 > A currently updating
+
 ```json
 {
 	"ZipNum":34109,
