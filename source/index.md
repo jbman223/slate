@@ -21,7 +21,9 @@ Welcome to the Zipcode Analytics API reference. THis documentation will guide yo
 
 Authentication with the API happens with each request. Every request to the API should include your API key in the query string, like so 
     
-    apikey=*YOUR API KEY*
+`apikey=YOUR_API_KEY`
+
+`https://zipcodeanalytics.com/api/profile?apikey=YOUR_API_KEY`
 
 # Profile
 
@@ -41,7 +43,9 @@ apikey | true | The API key attached to the current profile. | Query String
 
 
 ### Result
+A successful call will return the profile name and a friendly message.
 
+> An example successful call
 ```json
 {
    "message":"Hello! Your api key is valid.",
@@ -49,7 +53,7 @@ apikey | true | The API key attached to the current profile. | Query String
 }
 ```
 
-<aside class="danger">
+<aside class="warning">
 An invalid API key will cause the request to return a 404 error.
 </aside>
 
@@ -78,6 +82,7 @@ Type ID | Description | Example
 
 In the post body, a list of zipcodes should be included in the proper format type supplied in the URL.
 
+> Sample post body response
 ```
 34109, 1
 34109 : 0
@@ -87,25 +92,27 @@ In the post body, a list of zipcodes should be included in the proper format typ
 ```
 
 ### Result
+The data is added to your profile asynchronosly, and may not be available immediately after your response completes. Longer data sets may take seconds to complete.
 
+> Successful response message
 ```json
 {
    "message":"Data added to queue."
 }
 ```
 
-<aside>
-Not including the proper type of data in the URL will cause the API to throw an error.
-
+> An example error response
 ```json
 {
 	"error": "Format not recieved."
 }
 ```
 
+<aside class="warning">
+Not including the proper type of data in the URL will cause the API to throw an error.
 </aside>
 
-<aside class="danger">
+<aside class="warning">
 An invalid API key will cause the request to return a 404 error.
 </aside>
 
@@ -134,6 +141,7 @@ Type ID | Description | Example
 
 In the post body, a list of zipcodes should be included in the proper format type supplied in the URL.
 
+> Sample post body response
 ```
 34109, 1
 34109 : 0
@@ -143,25 +151,27 @@ In the post body, a list of zipcodes should be included in the proper format typ
 ```
 
 ### Result
+The data is added to your profile asynchronosly, and may not be available immediately after your response completes. Longer data sets may take seconds to complete.
 
+> Successful response message
 ```json
 {
    "message":"Data added to queue."
 }
 ```
 
-<aside>
-Not including the proper type of data in the URL will cause the API to throw an error.
-
+> An example error response
 ```json
 {
 	"error": "Format not recieved."
 }
 ```
 
+<aside class="warning">
+Not including the proper type of data in the URL will cause the API to throw an error.
 </aside>
 
-<aside class="danger">
+<aside class="warning">
 An invalid API key will cause the request to return a 404 error.
 </aside>
 
@@ -180,13 +190,17 @@ Parameter | Required | Description | Parameter Type
 apikey | true | The API key attached to the current profile. | Query String
 
 ### Result
+
+A successful response will report that the data has been cleared from the specified profile.
+
+> A successful Delete response
 ```json
 {
 	"message":"Data deleted from profile"
 }
 ```
 
-<aside class="danger">
+<aside class="warning">
 An invalid API key will cause the request to return a 404 error.
 </aside>
 
@@ -208,14 +222,17 @@ apikey | true | The API key attached to the current profile. | Query String
 
 ### Result
 
+The server will return a response with your API key and a message.
+
+> A successful call to the API will return a message and your API key.
 ```json
 {
 	"message":"You are successfully accessing the API.",
-    "apiKey":"k2MVySqu4F4fFXKsCixGPFV7hUQ6AckDKl7k6jhu9H0="
+    "apiKey":"YOUR API KEY"
 }
 ```
 
-<aside class="danger">
+<aside class="warning">
 An invalid API key will cause the request to return a 404 error.
 </aside>
 
@@ -237,6 +254,9 @@ apikey | true | The API key attached to the current profile. | Query String
 
 ### Result
 
+A successful response will include the zipcode, the zipcode's rating, and a null warning.
+
+> A successful response
 ```json
 {
 	"ZipNum":34109,
@@ -245,10 +265,28 @@ apikey | true | The API key attached to the current profile. | Query String
 }
 ```
 
-If the `Rating` parameter is null, the data is currently being recalculated by the server and will not be available for about 10 seconds. This only happens after the data is first created or recently updated.
-
 If the `warning` parameter is not null, there has been an update to your data that has not yet been processed by the server. Data is proccesed in bulk about every 5 minutes.
 
-<aside class="danger">
+> A pending update response
+```json
+{
+	"ZipNum":34109,
+    "Rating":1,
+    "Warning":"This zipcode has data in the queue and will be updated soon. The current information in this request will change soon."
+}
+```
+
+If the `Rating` parameter is 0, the data is currently being recalculated by the server and will not be available for about 10 seconds. This only happens after the data is first created or recently updated.
+
+> A currently updating
+```json
+{
+	"ZipNum":34109,
+    "Rating":0,
+    "Warning":"This zipcode data is being recalculated. Please refresh the page in 5 seconds to view the updated zipcode rating."
+}
+```
+
+<aside class="warning">
 An invalid API key will cause the request to return a 404 error.
 </aside>
